@@ -19,7 +19,7 @@ var connection = mysql.createConnection({
 
 //Connect to Database only if Config.js parameter is set.
 
-if(config.use_database==='true')
+if (config.use_database === 'true')
 {
     connection.connect();
 }
@@ -44,7 +44,7 @@ passport.use(new FacebookStrategy({
   function(accessToken, refreshToken, profile, done) {
     process.nextTick(function () {
       //Check whether the User exists or not using profile.id
-      if (config.use_database==='true')
+      if (config.use_database === 'true')
       {
         connection.query("SELECT * from user_info where user_id="+profile.id,
         function(err,rows,fields)
@@ -81,11 +81,11 @@ app.use(passport.session());
 app.use(express.static(__dirname + '/public'));
 
 app.get('/', function(req, res){
-  res.render('index', { user: req.user });
+  res.render('index', { user: req.param('user') });
 });
 
 app.get('/account', ensureAuthenticated, function(req, res){
-  res.render('account', { user: req.user });
+  res.render('account', { user: req.param('user') });
 });
 
 app.get('/auth/facebook', passport.authenticate('facebook',{scope:'email'}));
