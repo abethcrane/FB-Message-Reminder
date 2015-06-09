@@ -6,9 +6,9 @@ module.exports={
 
 	"facebook_client_id" 	: 				"421145674734383",
 	"facebook_api_secret"	:				"f231db11fe3589149ca5d86b76469ffc",
-	"callback_url"			:				"http://localhost:1337/auth/facebook/callback",
+	"callback_url"			:				"http://fbreply.azurewebsites.net/auth/facebook/callback",
 	"use_database"			:				"false",
-	"host"					:				"localhost",
+	"host"					:				"fbreply.azurewebsites.net",
 	"username"				:				"root",
 	"password"				:				"",
 	"database"				:				"",
