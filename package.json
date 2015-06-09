@@ -1,0 +1,32 @@
+{
+  "name": "FB-Message-Reminder",
+  "version": "0.0.0",
+  "description": "Don't leave your friends hanging - get notified if you haven't replied to someone after x hours/days",
+  "main": "app.js",
+  "dependencies": {
+    "tedious": "~1.11.0",
+    "express": "~4.12.4",
+		"body-parser": "1.7.0",
+		"cookie-parser": "1.3.2",
+		"ejs": "1.0.0",
+		"express-session": "1.7.6",
+		"mysql": "2.4.3",
+		"passport": "0.2.1",
+		"passport-facebook": "latest"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/abethcrane/FB-Message-Reminder.git"
+  },
+  "author": "Beth Crane",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/abethcrane/FB-Message-Reminder/issues"
+  },
+  "homepage": "https://github.com/abethcrane/FB-Message-Reminder"
+}
