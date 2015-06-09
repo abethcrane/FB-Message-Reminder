@@ -81,11 +81,11 @@ app.use(passport.session());
 app.use(express.static(__dirname + '/public'));
 
 app.get('/', function(req, res){
-  res.render('index', { user: req.param('user') });
+  res.render('index', { user: req.body.user });
 });
 
 app.get('/account', ensureAuthenticated, function(req, res){
-  res.render('account', { user: req.param('user') });
+  res.render('account', { user: req.body.user });
 });
 
 app.get('/auth/facebook', passport.authenticate('facebook',{scope:'email'}));
