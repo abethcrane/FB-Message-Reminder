@@ -19,7 +19,7 @@ var connection = mysql.createConnection({
 
 //Connect to Database only if Config.js parameter is set.
 
-if (config.use_database === 'true')
+if(config.use_database==='true')
 {
     connection.connect();
 }
@@ -33,7 +33,6 @@ passport.deserializeUser(function(obj, done) {
   done(null, obj);
 });
 
-
 // Use the FacebookStrategy within Passport.
 
 passport.use(new FacebookStrategy({
@@ -44,7 +43,7 @@ passport.use(new FacebookStrategy({
   function(accessToken, refreshToken, profile, done) {
     process.nextTick(function () {
       //Check whether the User exists or not using profile.id
-      if (config.use_database === 'true')
+      if (config.use_database==='true')
       {
         connection.query("SELECT * from user_info where user_id="+profile.id,
         function(err,rows,fields)
@@ -80,24 +79,27 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static(__dirname + '/public'));
 
-app.get('/', function(req, res){
-  res.render('index', { user: req.body.user });
+app.get('/', function(req, res) {
+  res.render('index', { user: req.user });
 });
 
-app.get('/account', ensureAuthenticated, function(req, res){
-  res.render('account', { user: req.body.user });
+app.get('/account', ensureAuthenticated, function(req, res) {
+  res.render('account', { user: req.user });
 });
 
-app.get('/auth/facebook', passport.authenticate('facebook',{scope:'email'}));
+app.get('/auth/facebook',
+  passport.authenticate('facebook', { scope:'email' })
+);
 
 
 app.get('/auth/facebook/callback',
   passport.authenticate('facebook', { successRedirect : '/', failureRedirect: '/login' }),
   function(req, res) {
     res.redirect('/');
-  });
+  }
+);
 
-app.get('/logout', function(req, res){
+app.get('/logout', function(req, res) {
   req.logout();
   res.redirect('/');
 });
