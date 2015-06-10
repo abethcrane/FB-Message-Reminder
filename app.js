@@ -68,7 +68,7 @@ passport.use(new FacebookStrategy({
 
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
-app.use(cookieParser());
+app.use(cookieParser(config.cookie_secret));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(session({
     secret: config.cookie_secret,
